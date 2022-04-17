@@ -48,7 +48,7 @@ And go from there.  Manpages are available in the 'doc' directory.
 To install properly, run:
 
     python3 setup.py build
-    python3 setup.py install --single-version-externally-managed --record=install-files.txt
+    sudo python3 setup.py install --single-version-externally-managed --record=install-files.txt
 
 See `--help` for an overview of the available options; e.g. `--prefix` to
 install to a custom base directory, and `--without-gettext` to avoid
@@ -57,7 +57,7 @@ installing natural language support files.
 setup.py supports basic uninstallation provided `--record` was used for
 installation as above:
 
-    python3 setup.py uninstall --manifest=install-files.txt
+    sudo python3 setup.py uninstall --manifest=install-files.txt
 
 Note that uninstall will avoid removing most empty directories so it
 won't harm e.g. locale or icon directories which only contain Terminator

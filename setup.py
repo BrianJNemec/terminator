@@ -149,30 +149,7 @@ class Uninstall(Command):
 
 class InstallData(install_data):
   def run (self):
-    self.data_files.extend (self._find_css_files ())
-    self.data_files.extend (self._find_mo_files ())
     install_data.run (self)
-
-  def _find_mo_files (self):
-    data_files = []
-
-    if not self.distribution.without_gettext:
-      for mo in glob.glob (os.path.join (MO_DIR, '*', 'terminator.mo')):
-       lang = os.path.basename(os.path.dirname(mo))
-       dest = os.path.join('share', 'locale', lang, 'LC_MESSAGES')
-       data_files.append((dest, [mo]))
-
-    return data_files
-
-  def _find_css_files (self):
-    data_files = []
-
-    for css_dir in glob.glob (os.path.join (CSS_DIR, '*')):
-       srce = glob.glob (os.path.join(css_dir, 'gtk-3.0', 'apps', '*.css'))
-       dest = os.path.join('share', 'terminator', css_dir, 'gtk-3.0', 'apps')
-       data_files.append((dest, srce))
-
-    return data_files
 
 
 if platform.system() in ['FreeBSD', 'OpenBSD']:
@@ -191,7 +168,7 @@ setup(name=APP_NAME,
       author_email='cmsj@tenshu.net',
       url='https://github.com/gnome-terminator/terminator',
       license='GNU GPL v2',
-      scripts=['terminator', 'remotinator'],
+      scripts=[],
       data_files=[
                   ('share/applications', ['data/terminator.desktop']),
                   ('share/metainfo', ['data/terminator.metainfo.xml']),
@@ -215,10 +192,7 @@ setup(name=APP_NAME,
                   ('share/icons/HighContrast/16x16/actions', glob.glob('data/icons/HighContrast/16x16/actions/*.png')),
                   ('share/icons/HighContrast/16x16/status', glob.glob('data/icons/HighContrast/16x16/status/*.png')),
                  ],
-      packages=[
-          'terminatorlib',
-          'terminatorlib.plugins',
-      ],
+      packages=[],
       setup_requires=[
           'pytest-runner',
       ],

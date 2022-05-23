@@ -1,0 +1,16 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Terminator
+Exec=python3 /home/bnemec/bs/terminator/terminator
+Icon=terminator
+Type=Application
+Categories=GNOME;GTK;Utility;TerminalEmulator;System;
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=terminator
+X-Ayatana-Desktop-Shortcuts=NewWindow;
+Keywords=terminal;shell;prompt;command;commandline;
+[NewWindow Shortcut Group]
+Name=Open a New Window
+Exec=python3 /home/bnemec/bs/terminator/terminator
+TargetEnvironment=Unity
+
